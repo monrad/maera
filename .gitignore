@@ -52,3 +52,14 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# DS_Store files
+.DS_Store
+
+# local conf and cfg file
+maera.conf
+areas.cfg
+
+#Sublime project files
+*.sublime-project
+*.sublime-workspace
