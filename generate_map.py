@@ -64,7 +64,7 @@ data = np.array(data)
 max_idx = (data > 100)
 data[max_idx] = 100
 
-areas = ["ortho2_eu","ortho2_na","ortho2_sa","ortho2_africa","ortho2_singa"]
+areas = ["pc_world","ortho2_eu","ortho2_na","ortho2_sa","ortho2_africa","ortho2_singa"]
 for area in areas:
 	area_def = pr.utils.load_area('areas.cfg', area)
 	swath_def = pr.geometry.SwathDefinition(lons, lats)

@@ -1,3 +1,12 @@
+REGION: pc_world {
+   NAME:    Plate Carree world map
+   PCS_ID:  pc_world
+   PCS_DEF: proj=eqc
+   XSIZE: 640
+   YSIZE: 480
+   AREA_EXTENT:  (-20037508.34, -10018754.17, 20037508.34, 10018754.17)
+};
+
 REGION: ortho2_eu {
   NAME:    Ortho globe
   PCS_ID:  ortho_globe
