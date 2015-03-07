@@ -1,0 +1,44 @@
+REGION: ortho2_eu {
+  NAME:    Ortho globe
+  PCS_ID:  ortho_globe
+  PCS_DEF: proj=ortho, a=6370997.0, lon_0=12, lat_0=56
+  XSIZE: 640
+  YSIZE: 480
+  AREA_EXTENT:  (-5000000, -5000000, 5000000, 5000000)
+};
+
+REGION: ortho2_na {
+  NAME:    Ortho globe
+  PCS_ID:  ortho_globe
+  PCS_DEF: proj=ortho, a=6370997.0, lon_0=-100, lat_0=40
+  XSIZE: 640
+  YSIZE: 480
+  AREA_EXTENT:  (-5000000, -5000000, 5000000, 5000000)
+};
+
+REGION: ortho2_sa {
+  NAME:    Ortho globe
+  PCS_ID:  ortho_globe
+  PCS_DEF: proj=ortho, a=6370997.0, lon_0=-60, lat_0=-15
+  XSIZE: 640
+  YSIZE: 480
+  AREA_EXTENT:  (-5000000, -5000000, 5000000, 5000000)
+};
+
+REGION: ortho2_africa {
+  NAME:    Ortho globe
+  PCS_ID:  ortho_globe
+  PCS_DEF: proj=ortho, a=6370997.0, lon_0=20, lat_0=10
+  XSIZE: 640
+  YSIZE: 480
+  AREA_EXTENT:  (-5000000, -5000000, 5000000, 5000000)
+};
+
+REGION: ortho2_singa {
+  NAME:    Ortho globe
+  PCS_ID:  ortho_globe
+  PCS_DEF: proj=ortho, a=6370997.0, lon_0=105, lat_0=0
+  XSIZE: 640
+  YSIZE: 480
+  AREA_EXTENT:  (-5000000, -5000000, 5000000, 5000000)
+};
