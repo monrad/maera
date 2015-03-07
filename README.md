@@ -4,6 +4,9 @@ Maera is a tool that is able to generate latency maps from RIPE ATLAS data
 # Warning
 This tool will eat up all your RIPE ATLAS credits if you are not careful.
 
+# Naming
+Maera was the daugther of Atlas.
+
 # Work to be done
   * Explain which modules are needed to run the programs
   * Make a simple usage guide
