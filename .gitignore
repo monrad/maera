@@ -63,3 +63,9 @@ areas.cfg
 #Sublime project files
 *.sublime-project
 *.sublime-workspace
+
+# data files
+data/*.ast
+
+# output
+output/*.png
