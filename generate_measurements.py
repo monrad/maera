@@ -54,6 +54,13 @@ all_probes_dict = {}
 
 print "Found " + str(probe_objects["meta"]["total_count"]) + " probes."
 
+# FIXME: Duplicated code from the next while loop, should be made into a fuction.
+for probe in probe_objects["objects"]:
+	probe_dict = {}
+	probe_dict["latitude"] = probe["latitude"]
+	probe_dict["longitude"] = probe["longitude"]
+	all_probes_dict[probe["id"]] = probe_dict
+
 while probe_objects["meta"]["next"] is not None:
 	r = requests.get(atlas_site + probe_objects["meta"]["next"] )
 	probe_objects = r.json()
