@@ -86,7 +86,7 @@ open("data/probe_" + args.target + "_" + now.strftime("%Y%m%dT%H%M") + ".ast",
 def chunks(lst, number):
     """Yield successive number-sized chunks from lst."""
     for i in range(0, len(lst), number):
-        yield lst[i:i+number]
+        yield lst[i:i + number]
 
 chunked_probes_list = list(chunks(list(all_probes_dict), 498))
 
