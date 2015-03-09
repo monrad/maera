@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import requests
 import numpy as np
 import pyresample as pr
