@@ -1,5 +1,0 @@
-# config file for maera
-
-atlas_download_api_key = ""
-atlas_create_api_key = ""
-atlas_site = "https://atlas.ripe.net"
