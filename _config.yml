@@ -6,5 +6,8 @@ baseurl: "/maera" # the subpath of your site, e.g. /blog/
 twitter_username: mikkelmonrad
 github_username:  monrad
 
+#GA
+google_analytics: UA-60830157-1
+
 # Build settings
 markdown: kramdown
