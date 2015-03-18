@@ -89,9 +89,11 @@ for area in areas:
                                        sigmas=pr.utils.fwhm2sigma(300000),
                                        fill_value=None
                                        )
-    print "writing output/" + target + time + area + "_rtt" + str(upper_rtt) + "_map.png"
+    print "writing output/" + target + "_" + time + \
+          area + "_rtt" + str(upper_rtt) + "_map.png"
     pr.plot.save_quicklook("output/" +
                            target +
+                           "_" +
                            time +
                            area +
                            "_rtt" +
