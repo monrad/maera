@@ -69,3 +69,8 @@ data/*.ast
 
 # output
 output/*.png
+
+# jekyll
+Gemfile.lock
+_site/
+.sass-cache/

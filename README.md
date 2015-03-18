@@ -18,6 +18,9 @@ This tool will eat up all your RIPE ATLAS credits if you are not careful.
 # Naming
 Maera was the daugther of Atlas.
 
+# Example of output
+![EU Google Public DNS](http://monrad.github.io/maera/img/google-public-dns-a.google.com.20150310T2147ortho2_eu_map.png "EU Google Public DNS")
+
 # Work to be done
   * Make a simple usage guide
   * Write better python code
