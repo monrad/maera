@@ -12,7 +12,11 @@ config = ConfigObj('maera.conf')
 parser = argparse.ArgumentParser(description="Generate Atlas map")
 parser.add_argument("--measurements", "-m", help="Done measurements AST file",
                     required=True)
+parser.add_argument("--rtt-upper", "-r", type=int, default=100, required=False,
+                    help="Upper boundary for mapping RTT in ms")
 args = parser.parse_args()
+
+upper_rtt = args.rtt_upper
 
 measurements_split = args.measurements.split('_')
 
@@ -63,8 +67,8 @@ for line in output:
 lons = np.array(lons)
 lats = np.array(lats)
 data = np.array(data)
-max_idx = (data > 100)
-data[max_idx] = 100
+max_idx = (data > upper_rtt)
+data[max_idx] = upper_rtt
 
 areas = [
     "pc_world",
@@ -85,10 +89,15 @@ for area in areas:
                                        sigmas=pr.utils.fwhm2sigma(300000),
                                        fill_value=None
                                        )
+    print "writing output/" + target + "_" + time + \
+          area + "_rtt" + str(upper_rtt) + "_map.png"
     pr.plot.save_quicklook("output/" +
                            target +
+                           "_" +
                            time +
                            area +
+                           "_rtt" +
+                           str(upper_rtt) +
                            '_map.png',
                            area_def,
                            result,
