@@ -13,7 +13,7 @@ This tool will eat up all your RIPE ATLAS credits if you are not careful.
     * pip install pyresample
     * pip install requests
     * pip install ripe.atlas.sagan[fast]
-    * pip install https://github.com/RIPE-NCC/ripe-atlas-cousteau/zipball/master
+    * pip install https://github.com/RIPE-NCC/ripe-atlas-cousteau/zipball/latest
 
 # Naming
 Maera was the daugther of Atlas.
