@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import requests
 import time
 import datetime
 import argparse
@@ -7,6 +6,7 @@ from configobj import ConfigObj
 from ripe.atlas.cousteau import (
     Ping,
     AtlasSource,
+    ProbeRequest,
     AtlasCreateRequest
 )
 
@@ -37,46 +37,34 @@ atlas_download_api_key = config["atlas_download_api_key"]
 atlas_create_api_key = config["atlas_create_api_key"]
 atlas_site = config["atlas_site"]
 
-filters = ""
+filters = {"status": "1"}
 if args.addressfamily == 4:
-    tags = "&tags=system-ipv4-works"
+    filters["tags"] = "system-ipv4-works"
 elif args.addressfamily == 6:
-    tags = "&tags=system-ipv6-works"
+    filters["tags"] = "system-ipv6-works"
 else:
     raise Warning("Unkown Address Family")
 
 if args.filter_tags:
-    tags += "," + args.filter_tags
+    filters["tags"] += "," + args.filter_tags
 
 if args.filter_cc:
-    filters += "&country_code=" + args.filter_cc
+    filters["country_code"] = args.filter_cc
 
 if args.filter_asn:
-    filters += "&asn_v" + str(args.addressfamily) + "=" + args.filter_asn
+    asn_filter_key = "asn_v%d" % args.addressfamily
+    filters[asn_filter_key] = args.filter_asn
 
-r = requests.get(atlas_site + "/api/v1/probe/?limit=100&status=1" +
-                 tags + filters)
-probe_objects = r.json()
 all_probes_dict = {}
 
-print "Found " + str(probe_objects["meta"]["total_count"]) + " probes."
+probes = ProbeRequest(**filters)
+for probe in probes:
+    all_probes_dict[probe["id"]] = {
+        "latitude": probe["latitude"],
+        "longitude": probe["longitude"]
+    }
 
-# FIXME: Duplicated code from the next while loop, should be made into a fuction.
-for probe in probe_objects["objects"]:
-	probe_dict = {}
-	probe_dict["latitude"] = probe["latitude"]
-	probe_dict["longitude"] = probe["longitude"]
-	all_probes_dict[probe["id"]] = probe_dict
-
-while probe_objects["meta"]["next"] is not None:
-    r = requests.get(atlas_site + probe_objects["meta"]["next"])
-    probe_objects = r.json()
-
-    for probe in probe_objects["objects"]:
-        probe_dict = {}
-        probe_dict["latitude"] = probe["latitude"]
-        probe_dict["longitude"] = probe["longitude"]
-        all_probes_dict[probe["id"]] = probe_dict
+print "Found %d probes." % probes.total_count
 
 # save probes state
 open("data/probe_" + args.target + "_" + now.strftime("%Y%m%dT%H%M") + ".ast",
