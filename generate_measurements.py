@@ -2,6 +2,7 @@
 import time
 import datetime
 import argparse
+import json
 from configobj import ConfigObj
 from ripe.atlas.cousteau import (
     Ping,
@@ -113,9 +114,10 @@ for probes_list in chunked_probes_list:
             done_measurements.append(response["measurements"][0])
             break
         else:
-            if response["ADDITIONAL_MSG"] == '{"error": {"code": 104, "message": "We do not allow more than 10 concurrent measurements to the same target."}}':
-                time.sleep(180)
+            additionalmsg = json.loads(response["ADDITIONAL_MSG"])
+            if additionalmsg['error']['code'] == 104:
                 print "sleeping 180 seconds"
+                time.sleep(180)
                 attempts += 1
             else:
                 print done_measurements
